@@ -1,24 +1,24 @@
-#root {
+#root { /* Root element styles */
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
+.logo { /* Logo styles */
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
+.logo:hover { /* Logo hover effect */
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
+@keyframes logo-spin { /* Animation for the logo */
   from {
     transform: rotate(0deg);
   }
@@ -27,28 +27,28 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) { /* Animation for non-reduced motion users */
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
-.card {
+.card { /* Card styles */
   padding: 2em;
 }
 
-.read-the-docs {
+.read-the-docs { /* Documentation link styles */
   color: #888;
 }
 
-.tours-container {
+.tours-container { /* Container for the tours */
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
 
-.tour-card {
+.tour-card { /* Tour card styles */
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
@@ -57,27 +57,27 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.tour-image {
+.tour-image { /* Tour image styles */
   width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
 }
 
-.tour-details h2 {
+.tour-details h2 { /* Tour title styles */
   margin: 10px 0;
 }
 
-.tour-details p {
+.tour-details p { /* Tour description styles */
   font-size: 14px;
   color: #555;
 }
 
-.tour-details h3 {
+.tour-details h3 { /* Tour name styles */
   color: #007bff;
 }
 
-.tour-details button {
+.tour-details button { /* Button styles */
   background-color: #ff4d4d;
   color: white;
   border: none;
@@ -86,11 +86,11 @@
   cursor: pointer;
 }
 
-.tour-details button:hover {
+.tour-details button:hover { /* Button hover effect */
   background-color: #ff1a1a;
 }
 
-.refresh-button {
+.refresh-button { /* Refresh button styles */
   background-color: #007bff;
   color: white;
   border: none;
@@ -101,6 +101,6 @@
   margin-top: 20px;
 }
 
-.refresh-button:hover {
+.refresh-button:hover { /* Refresh button hover effect */
   background-color: #0056b3;
 }
