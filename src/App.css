@@ -45,6 +45,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .tour-card {
@@ -53,6 +54,7 @@
   padding: 16px;
   width: 300px;
   text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .tour-image {
@@ -86,4 +88,19 @@
 
 .tour-details button:hover {
   background-color: #ff1a1a;
+}
+
+.refresh-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.refresh-button:hover {
+  background-color: #0056b3;
 }
