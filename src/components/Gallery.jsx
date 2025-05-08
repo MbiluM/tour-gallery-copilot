@@ -1,22 +1,36 @@
-import React from 'react'; // Import React library
-import TourCard from './TourCard'; // Import the TourCard component to display individual tour cards
+import React, { useState } from 'react';
 
-function Gallery({ tours, onRemove }) { // Gallery component to display a list of tours
-  return ( 
-    <div className="tours-container"> 
-      {tours.map((tour) => (
-        <TourCard
-          key={tour.id}
-          id={tour.id}
-          name={tour.name}
-          info={tour.info}
-          image={tour.image}
-          price={tour.price}
-          onRemove={onRemove}
-        />
-      ))}
+function Gallery({ rooms }) {
+  const [selectedRoom, setSelectedRoom] = useState(null); // State to track the selected room
+
+  return (
+    <div className="gallery">
+      <h1>Gallery</h1>
+      <div className="gallery-grid">
+        {rooms.map((room, index) => (
+          <div
+            key={index}
+            className="gallery-item"
+            onClick={() => setSelectedRoom(room)} // Set the selected room on click
+          >
+            <img src={room.image} alt={room.name} />
+            <h3>{room.name}</h3>
+            <p>Price: R{room.price}</p> {/* Display price in South African Rand */}
+          </div>
+        ))}
+      </div>
+
+      {/* Display selected room details */}
+      {selectedRoom && (
+        <div className="selected-room">
+          <h2>{selectedRoom.name}</h2>
+          <img src={selectedRoom.image} alt={selectedRoom.name} />
+          <p>{selectedRoom.description}</p>
+          <p>Price: R{selectedRoom.price}</p> {/* Display price in South African Rand */}
+        </div>
+      )}
     </div>
   );
 }
 
-export default Gallery; // Export the Gallery component to be used in other parts of the app
+export default Gallery;

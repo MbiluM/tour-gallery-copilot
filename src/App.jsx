@@ -1,72 +1,126 @@
-import { useState, useEffect } from 'react'; // Import React hooks for state and effect management
-import './App.css'; // Import the CSS file for styling
-import Gallery from './components/Gallery'; // Import the Gallery component to display the list of tours
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
+import HouseCard from './components/HouseCard';
+import Gallery from './components/Gallery';
+import AboutUs from './components/AboutUs';
+import ContactUs from './components/ContactUs';
+import Cart from './components/Cart';
+import Confirmation from './components/Confirmation';
+import PayGate from './components/PayGate';
 
-function App() { // Main App component
-  const [tours, setTours] = useState([]); // State to manage the list of tours
-  const [loading, setLoading] = useState(true); // State to manage the loading state
-  const [error, setError] = useState(null);  // State to manage the list of tours, loading state, and error state
+function App() {
+  const rooms = [
+    {
+      name: 'Main Bedroom',
+      description: 'A luxurious room with a king-sized bed.',
+      image: 'https://via.placeholder.com/300',
+      price: 2900,
+    },
+    {
+      name: 'Guest Room 1',
+      description: 'A spacious room with a beautiful view.',
+      image: 'https://via.placeholder.com/300',
+      price: 2400,
+    },
+    {
+      name: 'Guest Room 2',
+      description: 'A cozy room perfect for relaxation.',
+      image: 'https://via.placeholder.com/300',
+      price: 2400,
+    },
+    {
+      name: 'Guest Room 3',
+      description: 'An elegant room with modern amenities.',
+      image: 'https://via.placeholder.com/300',
+      price: 2400,
+    },
+    {
+      name: 'Entire House',
+      description: 'Book the entire house for your stay.',
+      image: 'https://via.placeholder.com/300',
+      price: 10100,
+    },
+  ];
 
-  const fetchTours = async () => { // Function to fetch tours from the API
-    setLoading(true); // Set loading to true before fetching
-    setError(null); // Reset error before fetching
-    try {
-      const response = await fetch('https://www.course-api.com/react-tours-project');
-      if (!response.ok) {
-        throw new Error(`Failed to fetch tours: ${response.statusText}`); // If the response is not ok, throw an error
-      }
-      const data = await response.json(); // Parse the JSON response
-      setTours(data);      // Update the tours state with the fetched data
-    } catch (err) {
-      setError(err.message || 'Something went wrong while fetching tours.');// If an error occurs, update the error state with the error message
-    } finally {
-      setLoading(false);// Set loading to false after the fetch is complete (success or failure)
+  const [cart, setCart] = useState([]); // Store multiple bookings in an array
 
-    }
+  const handleAddToCart = (selectedRoom, checkInDate, checkOutDate, totalPrice) => {
+    const newBooking = { selectedRoom, checkInDate, checkOutDate, totalPrice };
+    setCart((prevCart) => [...prevCart, newBooking]); // Append the new booking to the cart
   };
-  // useEffect to fetch tours when the component mounts
-  useEffect(() => {
-    fetchTours();
-  }, []);
-  // Function to remove a tour from the list
-  // Accepts the `id` of the tour to be removed
-  const removeTour = (id) => {
-    setTours(tours.filter((tour) => tour.id !== id));
+
+  const handleConfirmBooking = () => {
+    alert('Booking confirmed! Thank you for choosing The Randburg Residence.');
+    setCart([]); // Clear the cart after confirmation
   };
-  // Conditional rendering: If the app is in the loading state, display a loading message
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
-  // Conditional rendering: If there is an error, display the error message and a retry button
-  if (error) {
-    return (
-      <div>
-        <h2>Error: {error}</h2>
-        <button onClick={fetchTours} className="refresh-button">
-          Refresh
-        </button>
-      </div>
-    );
-  }
-  // Conditional rendering: If no tours are left, display a message and a refresh button
-  if (tours.length === 0) {
-    return (
-      <div>
-        <h2>No Tours Left</h2>
-        <button onClick={fetchTours} className="refresh-button">
-          Refresh
-        </button>
-      </div>
-    );
-  }
-  // Render the Gallery component with the list of tours
+
   return (
-    <div>
-      <h1>Our Tours</h1>
-      <Gallery tours={tours} onRemove={removeTour} />
-    </div>
+    <Router>
+      <div>
+        {/* Navigation Bar */}
+        <nav className="navbar">
+          <ul>
+            <li><Link to="/">Homepage</Link></li>
+            <li><Link to="/book-now">Accommodations</Link></li>
+            <li><Link to="/about-us">Overview</Link></li>
+            <li><Link to="/gallery">Gallery</Link></li>
+            <li><Link to="/contact-us">Contact Us</Link></li>
+          </ul>
+        </nav>
+
+        {/* Cart Display */}
+        <Cart
+          bookings={cart} // Pass the array of bookings to the Cart component
+          onConfirm={handleConfirmBooking}
+        />
+
+        {/* Define Routes */}
+        <Routes>
+          <Route
+            path="/"
+            element={<h1>Welcome to Our Homepage</h1>}
+          />
+          <Route
+            path="/book-now"
+            element={
+              <div>
+                <HouseCard
+                  name="Randburg Luxury Residence"
+                  description="A luxurious mansion in Randburg, South Africa."
+                  image="https://via.placeholder.com/300"
+                  roomPrices={[2900, 2400, 2400, 2400]}
+                  onBook={(selectedRoom, checkInDate, checkOutDate, totalPrice) =>
+                    handleAddToCart(selectedRoom, checkInDate, checkOutDate, totalPrice)
+                  }
+                />
+              </div>
+            }
+          />
+          <Route
+            path="/gallery"
+            element={<Gallery rooms={rooms} />}
+          />
+          <Route
+            path="/about-us"
+            element={<AboutUs />}
+          />
+          <Route
+            path="/contact-us"
+            element={<ContactUs />}
+          />
+          <Route
+            path="/confirmation"
+            element={<Confirmation />}
+          />
+          <Route
+            path="/paygate"
+            element={<PayGate />}
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
-export default App; // Export the App component as the default export
-
+export default App;

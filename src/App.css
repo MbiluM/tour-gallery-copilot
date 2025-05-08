@@ -1,106 +1,389 @@
-#root { /* Root element styles */
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* General body styling */
+body {
+  font-family: 'Georgia', serif; /* Use a serif font for a luxurious feel */
+  background-color: #f8f5f2; /* Light beige background for elegance */
+  margin: 0;
+  padding: 0;
+  color: #333; /* Dark text for readability */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Ensure the body takes up the full viewport height */
+  text-align: center; /* Center text inside elements */
+}
+
+/* Main heading styling */
+h1 {
+  font-size: 2.5rem; /* Larger font size for prominence */
+  color: #b89d68; /* Gold color for luxury */
+  font-weight: bold;
+  margin-bottom: 20px; /* Add spacing below the heading */
+}
+
+/* Secondary heading styling */
+h2 {
+  font-size: 1.8rem;
+  color: #555;
   text-align: center;
 }
 
-.logo { /* Logo styles */
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover { /* Logo hover effect */
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin { /* Animation for the logo */
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) { /* Animation for non-reduced motion users */
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card { /* Card styles */
-  padding: 2em;
-}
-
-.read-the-docs { /* Documentation link styles */
-  color: #888;
-}
-
-.tours-container { /* Container for the tours */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.tour-card { /* Tour card styles */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  width: 300px;
+/* Tertiary heading styling */
+h3 {
+  font-size: 1.5rem;
+  color: #b89d68; /* Gold color for luxury */
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+h4 {
+  font-size: 1rem;
+  color: #b89d68; /* Gold color for luxury */
+  text-align: center;
 }
 
-.tour-image { /* Tour image styles */
+/* House card styling */
+.house-card {
+  border: 1px solid #ddd; /* Subtle border for elegance */
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  margin: 40px auto;
+  background-color: #fff; /* White background for contrast */
+}
+
+.house-image {
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
+  border-radius: 12px; /* Match the card's rounded corners */
+  margin-bottom: 20px;
+}
+
+.house-details h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px; 
+  text-align: center;
+}
+
+.house-details p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.house-details h3 {
+  font-size: 1.5rem;
+  color: #b89d68; /* Gold color for luxury */
+  margin-bottom: 20px;
+}
+
+/* Button styling */
+.house-details button {
+  background-color: #b89d68; /* Gold background */
+  color: white; /* White text */
+  border: none;
+  padding: 12px 20px;
   border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
 }
 
-.tour-details h2 { /* Tour title styles */
-  margin: 10px 0;
+.house-details button:hover {
+  background-color: #a07f4f; /* Darker gold on hover */
+  transform: scale(1.05); /* Slight zoom effect */
 }
 
-.tour-details p { /* Tour description styles */
+/* Navigation bar styling */
+.navbar {
+  background-color: #1a1a1a; /* Rich black background */
+  padding: 15px 20px; /* Add padding for spacing */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure it stays on top */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.navbar ul {
+  list-style: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Display items in a row */
+  justify-content: center; /* Center the items */
+}
+
+.navbar ul li {
+  margin: 0 20px; /* Add spacing between items */
+}
+
+.navbar ul li a {
+  color: #f8f5f2; /* White text for contrast */
+  text-decoration: none; /* Remove underline */
+  font-size: 18px; /* Slightly larger font size */
+  font-weight: bold; /* Bold text for emphasis */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar ul li a:hover {
+  color: #b89d68; /* Gold color on hover */
+}
+
+/* Footer styling */
+footer {
+  background-color: #1a1a1a; /* Match the navbar */
+  color: #f8f5f2; /* White text */
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
   font-size: 14px;
+}
+
+/* Center the "Welcome to Our Homepage" text */
+.homepage {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  text-align: center; /* Center the text */
+  background-color: #f8f5f2; /* Optional: Add a light background for elegance */
+  color: #b89d68; /* Gold color for luxury */
+  font-family: 'Georgia', serif; /* Elegant font */
+  font-size: 2.5rem; /* Larger font size for prominence */
+  font-weight: bold; /* Bold text for emphasis */
+}
+
+/* Gallery grid styling */
+.gallery-grid {
+  display: grid; /* Use grid layout for the gallery */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Add spacing between items */
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Limit the maximum width */
+  margin: 0 auto; /* Center the grid */
+}
+
+/* Gallery item styling */
+.gallery-item {
+  border: 1px solid #ddd; /* Subtle border for elegance */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px;
+  background-color: #fff; /* White background for contrast */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.gallery-item:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Selected room styling */
+.selected-room {
+  margin-top: 20px; /* Add spacing above the selected room details */
+}
+
+.selected-room img {
+  width: 100%;
+  max-width: 400px; /* Limit the image width */
+  border-radius: 8px; /* Rounded corners */
+  margin-bottom: 10px; /* Add spacing below the image */
+}
+
+.selected-room h2 {
+  font-size: 1.8rem;
+  color: #b89d68; /* Gold color for luxury */
+  margin-bottom: 10px;
+}
+
+.selected-room p {
+  font-size: 1rem;
   color: #555;
 }
 
-.tour-details h3 { /* Tour name styles */
-  color: #007bff;
+/* Styling for the building description */
+.building-description {
+  margin-top: 20px; /* Add spacing above the description */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border: 1px solid #ddd; /* Subtle border for elegance */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
 }
 
-.tour-details button { /* Button styles */
-  background-color: #ff4d4d;
+.building-description h3 {
+  font-size: 1.8rem;
+  color: #b89d68; /* Gold color for luxury */
+  margin-bottom: 10px;
+}
+
+.building-description p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6; /* Improve readability */
+}
+
+/* Increase the size of the message text box */
+.contact-form textarea {
+  width: 10%; /* Full width */
+  height: 10px; /* Increase height */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Cart styling */
+.cart {
+  position: fixed;
+  top: 70px; /* Position below the navbar */
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  z-index: 1000;
+}
+
+.cart h3 {
+  font-size: 1.2rem;
+  color: #b89d68;
+  margin-bottom: 10px;
+}
+
+.cart p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.cart button {
+  background-color: #b89d68;
   color: white;
   border: none;
-  padding: 10px 16px;
+  padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
-.tour-details button:hover { /* Button hover effect */
-  background-color: #ff1a1a;
+.cart button:hover {
+  background-color: #a07f4f;
 }
 
-.refresh-button { /* Refresh button styles */
-  background-color: #007bff;
+/* Confirmation styling */
+.confirmation {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation h1 {
+  font-size: 2rem;
+  color: #b89d68;
+  margin-bottom: 20px;
+}
+
+.confirmation p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.confirmation-form div {
+  margin-bottom: 15px;
+}
+
+.confirmation-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.confirmation-form input {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.confirmation-form button {
+  background-color: #b89d68;
   color: white;
   border: none;
-  padding: 10px 16px;
+  padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 20px;
 }
 
-.refresh-button:hover { /* Refresh button hover effect */
-  background-color: #0056b3;
+.confirmation-form button:hover {
+  background-color: #a07f4f;
+}
+
+/* Paygate styling */
+.paygate {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.paygate h1 {
+  font-size: 2rem;
+  color: #b89d68;
+  margin-bottom: 20px;
+}
+
+.paygate p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.payment-form div {
+  margin-bottom: 15px;
+}
+
+.payment-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.payment-form input {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.payment-form button {
+  background-color: #b89d68;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.payment-form button:hover {
+  background-color: #a07f4f;
 }
