@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function PayGate({ clearCart }) {
   const [paymentDetails, setPaymentDetails] = useState({
@@ -7,6 +8,8 @@ function PayGate({ clearCart }) {
     cvv: '',
     cardHolderName: '',
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +22,9 @@ function PayGate({ clearCart }) {
   const handlePayment = (e) => {
     e.preventDefault();
     alert('Payment successful! Thank you for your booking.');
+    clearCart(); // Clear the cart
+    navigate('/'); // Redirect to the homepage
+    window.location.reload(); // Refresh the page
   };
 
   return (

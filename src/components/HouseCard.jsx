@@ -7,6 +7,15 @@ function HouseCard({ name, description, image, roomPrices, onBook }) {
   const [bookEntireHouse, setBookEntireHouse] = useState(false); // Whether the entire house is booked
   const [isAddedToCart, setIsAddedToCart] = useState(false); // Track if the room is added to the cart
 
+  // Get today's date in YYYY-MM-DD format
+  const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Add leading zero
+    const day = String(today.getDate()).padStart(2, '0'); // Add leading zero
+    return `${year}-${month}-${day}`;
+  };
+
   // Calculate the number of days based on the check-in and check-out dates
   const calculateDays = () => {
     if (checkInDate && checkOutDate) {
@@ -71,6 +80,7 @@ function HouseCard({ name, description, image, roomPrices, onBook }) {
           <input
             type="date"
             value={checkInDate}
+            min={getTodayDate()} // Restrict to today or future dates
             onChange={(e) => setCheckInDate(e.target.value)}
           />
         </div>
@@ -79,6 +89,7 @@ function HouseCard({ name, description, image, roomPrices, onBook }) {
           <input
             type="date"
             value={checkOutDate}
+            min={checkInDate || getTodayDate()} // Restrict to check-in date or future dates
             onChange={(e) => setCheckOutDate(e.target.value)}
           />
         </div>

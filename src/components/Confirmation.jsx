@@ -11,6 +11,7 @@ function Confirmation() {
   });
 
   const [error, setError] = useState(''); // State to track validation errors
+  const [isPaying, setIsPaying] = useState(false); // Track if the user has clicked "Pay Now"
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -38,6 +39,7 @@ function Confirmation() {
 
     // Clear any previous errors and redirect to the PayGate page
     setError('');
+    setIsPaying(true); // Disable the "Pay Now" button
     navigate('/paygate');
   };
 
@@ -102,7 +104,7 @@ function Confirmation() {
             required
           />
         </div>
-        <button type="submit">Pay Now</button>
+        {!isPaying && <button type="submit">Pay Now</button>}
       </form>
     </div>
   );

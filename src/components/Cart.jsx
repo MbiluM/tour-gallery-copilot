@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Cart({ bookings }) {
+function Cart({ bookings, setCart }) {
   const navigate = useNavigate();
 
   // Calculate the total price of all bookings
@@ -20,6 +20,12 @@ function Cart({ bookings }) {
     navigate('/confirmation'); // Redirect to the Confirmation page
   };
 
+  const handleRemove = (index) => {
+    // Remove the booking at the specified index
+    const updatedCart = bookings.filter((_, i) => i !== index);
+    setCart(updatedCart); // Update the cart state
+  };
+
   return (
     <div className="cart">
       <h3>Your Cart</h3>
@@ -29,6 +35,7 @@ function Cart({ bookings }) {
           <p><strong>Check-In Date:</strong> {booking.checkInDate}</p>
           <p><strong>Check-Out Date:</strong> {booking.checkOutDate}</p>
           <p><strong>Total Price:</strong> R{booking.totalPrice}</p>
+          <button onClick={() => handleRemove(index)}>Remove</button>
           <hr />
         </div>
       ))}

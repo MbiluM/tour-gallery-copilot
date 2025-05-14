@@ -50,15 +50,13 @@ function App() {
     setCart((prevCart) => [...prevCart, newBooking]); // Append the new booking to the cart
   };
 
-  const handleConfirmBooking = () => {
-    alert('Booking confirmed! Thank you for choosing The Randburg Residence.');
-    setCart([]); // Clear the cart after confirmation
+  const clearCart = () => {
+    setCart([]); // Clear all bookings in the cart
   };
 
   return (
     <Router>
       <div>
-        {/* Navigation Bar */}
         <nav className="navbar">
           <ul>
             <li><Link to="/">Homepage</Link></li>
@@ -69,54 +67,28 @@ function App() {
           </ul>
         </nav>
 
-        {/* Cart Display */}
-        <Cart
-          bookings={cart} // Pass the array of bookings to the Cart component
-          onConfirm={handleConfirmBooking}
-        />
+        <Cart bookings={cart} setCart={setCart} />
 
-        {/* Define Routes */}
         <Routes>
-          <Route
-            path="/"
-            element={<h1>Welcome to Our Homepage</h1>}
-          />
-          <Route
+          <Route path="/" element={<h1>Welcome to The Randburg Boutique Hotel</h1>} /><Route
             path="/book-now"
             element={
-              <div>
-                <HouseCard
-                  name="Randburg Luxury Residence"
-                  description="A luxurious mansion in Randburg, South Africa."
-                  image="https://via.placeholder.com/300"
-                  roomPrices={[2900, 2400, 2400, 2400]}
-                  onBook={(selectedRoom, checkInDate, checkOutDate, totalPrice) =>
-                    handleAddToCart(selectedRoom, checkInDate, checkOutDate, totalPrice)
-                  }
-                />
-              </div>
+              <HouseCard
+                name="Randburg Boutique Hotel"
+                description="A luxurious mansion in Randburg, South Africa."
+                image="https://via.placeholder.com/300"
+                roomPrices={[2900, 2400, 2400, 2400]}
+                onBook={(selectedRoom, checkInDate, checkOutDate, totalPrice) =>
+                  handleAddToCart(selectedRoom, checkInDate, checkOutDate, totalPrice)
+                }
+              />
             }
           />
-          <Route
-            path="/gallery"
-            element={<Gallery rooms={rooms} />}
-          />
-          <Route
-            path="/about-us"
-            element={<AboutUs />}
-          />
-          <Route
-            path="/contact-us"
-            element={<ContactUs />}
-          />
-          <Route
-            path="/confirmation"
-            element={<Confirmation />}
-          />
-          <Route
-            path="/paygate"
-            element={<PayGate />}
-          />
+          <Route path="/gallery" element={<Gallery rooms={rooms} />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/confirmation" element={<Confirmation />} />
+          <Route path="/paygate" element={<PayGate clearCart={clearCart} />} />
         </Routes>
       </div>
     </Router>
